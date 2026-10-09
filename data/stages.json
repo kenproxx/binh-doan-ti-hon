@@ -1,0 +1,1655 @@
+[
+  {
+    "id": 1,
+    "name": "Tân binh ra trận",
+    "chapter": 1,
+    "chapter_name": "Đồng cỏ sông xanh",
+    "map_variant": 0,
+    "seed": 4231,
+    "bridges": [
+      6,
+      17
+    ],
+    "obstacles": [
+      [
+        3,
+        7
+      ],
+      [
+        19,
+        28
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        15,
+        30
+      ]
+    ],
+    "objective": "destroy",
+    "time_limit": 180,
+    "start_resource": 180,
+    "enemy_resource": 90,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "blade"
+    ],
+    "ai_interval": 3.0,
+    "hold_seconds": 45,
+    "star_time": 150,
+    "star_losses": 12,
+    "movement_scale": 1.0,
+    "base_defense_damage": 0,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 128,
+    "reward_replay": 15,
+    "difficulty": "Dễ",
+    "terrain_hint": "2 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": "archer"
+  },
+  {
+    "id": 2,
+    "name": "Giữ hàng ngũ",
+    "chapter": 1,
+    "chapter_name": "Đồng cỏ sông xanh",
+    "map_variant": 1,
+    "seed": 4362,
+    "bridges": [
+      11
+    ],
+    "obstacles": [
+      [
+        4,
+        7
+      ],
+      [
+        18,
+        28
+      ],
+      [
+        8,
+        5
+      ],
+      [
+        15,
+        29
+      ]
+    ],
+    "objective": "destroy",
+    "time_limit": 180,
+    "start_resource": 180,
+    "enemy_resource": 90,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "blade"
+    ],
+    "ai_interval": 3.0,
+    "hold_seconds": 45,
+    "star_time": 150,
+    "star_losses": 12,
+    "movement_scale": 1.0,
+    "base_defense_damage": 0,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 136,
+    "reward_replay": 15,
+    "difficulty": "Dễ",
+    "terrain_hint": "1 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": ""
+  },
+  {
+    "id": 3,
+    "name": "Hỏa lực tiếp viện",
+    "chapter": 1,
+    "chapter_name": "Đồng cỏ sông xanh",
+    "map_variant": 2,
+    "seed": 4493,
+    "bridges": [
+      5,
+      12,
+      18
+    ],
+    "obstacles": [
+      [
+        17,
+        28
+      ],
+      [
+        8,
+        6
+      ],
+      [
+        15,
+        30
+      ]
+    ],
+    "objective": "destroy",
+    "time_limit": 180,
+    "start_resource": 180,
+    "enemy_resource": 90,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "blade"
+    ],
+    "ai_interval": 3.0,
+    "hold_seconds": 45,
+    "star_time": 150,
+    "star_losses": 12,
+    "movement_scale": 1.0,
+    "base_defense_damage": 0,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 144,
+    "reward_replay": 15,
+    "difficulty": "Dễ",
+    "terrain_hint": "3 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": "guard"
+  },
+  {
+    "id": 4,
+    "name": "Trạm bên sông",
+    "chapter": 1,
+    "chapter_name": "Đồng cỏ sông xanh",
+    "map_variant": 3,
+    "seed": 4624,
+    "bridges": [
+      6,
+      17
+    ],
+    "obstacles": [
+      [
+        19,
+        28
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        15,
+        29
+      ]
+    ],
+    "objective": "capture",
+    "time_limit": 180,
+    "start_resource": 180,
+    "enemy_resource": 180,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "blade",
+      "guard"
+    ],
+    "ai_interval": 3.0,
+    "hold_seconds": 45,
+    "star_time": 150,
+    "star_losses": 12,
+    "movement_scale": 1.0,
+    "base_defense_damage": 0,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 152,
+    "reward_replay": 15,
+    "difficulty": "Dễ",
+    "terrain_hint": "2 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": ""
+  },
+  {
+    "id": 5,
+    "name": "Hai mũi tiến quân",
+    "chapter": 1,
+    "chapter_name": "Đồng cỏ sông xanh",
+    "map_variant": 4,
+    "seed": 4755,
+    "bridges": [
+      11
+    ],
+    "obstacles": [
+      [
+        3,
+        7
+      ],
+      [
+        18,
+        28
+      ],
+      [
+        8,
+        5
+      ],
+      [
+        15,
+        30
+      ]
+    ],
+    "objective": "destroy",
+    "time_limit": 240,
+    "start_resource": 180,
+    "enemy_resource": 180,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "blade",
+      "guard"
+    ],
+    "ai_interval": 3.0,
+    "hold_seconds": 45,
+    "star_time": 150,
+    "star_losses": 12,
+    "movement_scale": 0.35,
+    "base_defense_damage": 28,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 160,
+    "reward_replay": 15,
+    "difficulty": "Dễ",
+    "terrain_hint": "1 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": ""
+  },
+  {
+    "id": 6,
+    "name": "Đêm giữ cầu",
+    "chapter": 1,
+    "chapter_name": "Đồng cỏ sông xanh",
+    "map_variant": 5,
+    "seed": 4886,
+    "bridges": [
+      5,
+      12,
+      18
+    ],
+    "obstacles": [
+      [
+        4,
+        7
+      ],
+      [
+        17,
+        28
+      ],
+      [
+        8,
+        6
+      ],
+      [
+        15,
+        29
+      ]
+    ],
+    "objective": "survive",
+    "time_limit": 240,
+    "start_resource": 180,
+    "enemy_resource": 180,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "blade",
+      "guard"
+    ],
+    "ai_interval": 3.0,
+    "hold_seconds": 45,
+    "star_time": 150,
+    "star_losses": 12,
+    "movement_scale": 0.35,
+    "base_defense_damage": 28,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 168,
+    "reward_replay": 15,
+    "difficulty": "Dễ",
+    "terrain_hint": "3 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": "medic"
+  },
+  {
+    "id": 7,
+    "name": "Cung thủ mai phục",
+    "chapter": 1,
+    "chapter_name": "Đồng cỏ sông xanh",
+    "map_variant": 6,
+    "seed": 5017,
+    "bridges": [
+      6,
+      17
+    ],
+    "obstacles": [
+      [
+        5,
+        7
+      ],
+      [
+        19,
+        28
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        15,
+        30
+      ]
+    ],
+    "objective": "hold",
+    "time_limit": 240,
+    "start_resource": 180,
+    "enemy_resource": 180,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "blade",
+      "archer"
+    ],
+    "ai_interval": 3.0,
+    "hold_seconds": 45,
+    "star_time": 150,
+    "star_losses": 12,
+    "movement_scale": 0.35,
+    "base_defense_damage": 28,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 176,
+    "reward_replay": 15,
+    "difficulty": "Dễ",
+    "terrain_hint": "2 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": ""
+  },
+  {
+    "id": 8,
+    "name": "Vệ binh tiền tuyến",
+    "chapter": 1,
+    "chapter_name": "Đồng cỏ sông xanh",
+    "map_variant": 7,
+    "seed": 5148,
+    "bridges": [
+      11
+    ],
+    "obstacles": [
+      [
+        6,
+        7
+      ],
+      [
+        18,
+        28
+      ],
+      [
+        8,
+        5
+      ],
+      [
+        15,
+        29
+      ]
+    ],
+    "objective": "destroy",
+    "time_limit": 240,
+    "start_resource": 180,
+    "enemy_resource": 180,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "blade",
+      "archer"
+    ],
+    "ai_interval": 3.0,
+    "hold_seconds": 45,
+    "star_time": 150,
+    "star_losses": 12,
+    "movement_scale": 0.35,
+    "base_defense_damage": 28,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 184,
+    "reward_replay": 15,
+    "difficulty": "Dễ",
+    "terrain_hint": "1 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": ""
+  },
+  {
+    "id": 9,
+    "name": "Lửa qua sông",
+    "chapter": 1,
+    "chapter_name": "Đồng cỏ sông xanh",
+    "map_variant": 8,
+    "seed": 5279,
+    "bridges": [
+      5,
+      12,
+      18
+    ],
+    "obstacles": [
+      [
+        3,
+        7
+      ],
+      [
+        17,
+        28
+      ],
+      [
+        8,
+        6
+      ],
+      [
+        15,
+        30
+      ]
+    ],
+    "objective": "capture",
+    "time_limit": 240,
+    "start_resource": 180,
+    "enemy_resource": 180,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "blade",
+      "archer"
+    ],
+    "ai_interval": 3.0,
+    "hold_seconds": 45,
+    "star_time": 150,
+    "star_losses": 12,
+    "movement_scale": 0.35,
+    "base_defense_damage": 28,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 192,
+    "reward_replay": 15,
+    "difficulty": "Dễ",
+    "terrain_hint": "3 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": ""
+  },
+  {
+    "id": 10,
+    "name": "Cổng đồng cỏ",
+    "chapter": 1,
+    "chapter_name": "Đồng cỏ sông xanh",
+    "map_variant": 9,
+    "seed": 5410,
+    "bridges": [
+      6,
+      17
+    ],
+    "obstacles": [
+      [
+        4,
+        7
+      ],
+      [
+        19,
+        28
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        15,
+        29
+      ]
+    ],
+    "objective": "destroy",
+    "time_limit": 240,
+    "start_resource": 180,
+    "enemy_resource": 180,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "blade",
+      "guard",
+      "archer"
+    ],
+    "ai_interval": 3.0,
+    "hold_seconds": 45,
+    "star_time": 150,
+    "star_losses": 12,
+    "movement_scale": 0.35,
+    "base_defense_damage": 28,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 200,
+    "reward_replay": 15,
+    "difficulty": "Dễ",
+    "terrain_hint": "2 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": "bomber"
+  },
+  {
+    "id": 11,
+    "name": "Ngã ba dòng chảy",
+    "chapter": 2,
+    "chapter_name": "Hẻm đá hai cầu",
+    "map_variant": 0,
+    "seed": 5541,
+    "bridges": [
+      6,
+      17
+    ],
+    "obstacles": [
+      [
+        3,
+        7
+      ],
+      [
+        19,
+        28
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        15,
+        30
+      ]
+    ],
+    "objective": "destroy",
+    "time_limit": 240,
+    "start_resource": 180,
+    "enemy_resource": 180,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "blade",
+      "guard",
+      "archer"
+    ],
+    "ai_interval": 2.0,
+    "hold_seconds": 55,
+    "star_time": 205,
+    "star_losses": 12,
+    "movement_scale": 0.35,
+    "base_defense_damage": 28,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 208,
+    "reward_replay": 15,
+    "difficulty": "Vừa",
+    "terrain_hint": "2 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": ""
+  },
+  {
+    "id": 12,
+    "name": "Trạm phía đông",
+    "chapter": 2,
+    "chapter_name": "Hẻm đá hai cầu",
+    "map_variant": 1,
+    "seed": 5672,
+    "bridges": [
+      11
+    ],
+    "obstacles": [
+      [
+        4,
+        7
+      ],
+      [
+        18,
+        28
+      ],
+      [
+        8,
+        5
+      ],
+      [
+        15,
+        29
+      ]
+    ],
+    "objective": "capture",
+    "time_limit": 240,
+    "start_resource": 180,
+    "enemy_resource": 180,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "blade",
+      "guard",
+      "archer"
+    ],
+    "ai_interval": 2.0,
+    "hold_seconds": 55,
+    "star_time": 205,
+    "star_losses": 12,
+    "movement_scale": 0.35,
+    "base_defense_damage": 28,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 216,
+    "reward_replay": 15,
+    "difficulty": "Vừa",
+    "terrain_hint": "1 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": ""
+  },
+  {
+    "id": 13,
+    "name": "Vành đai phòng thủ",
+    "chapter": 2,
+    "chapter_name": "Hẻm đá hai cầu",
+    "map_variant": 2,
+    "seed": 5803,
+    "bridges": [
+      5,
+      12,
+      18
+    ],
+    "obstacles": [
+      [
+        17,
+        28
+      ],
+      [
+        8,
+        6
+      ],
+      [
+        15,
+        30
+      ]
+    ],
+    "objective": "hold",
+    "time_limit": 240,
+    "start_resource": 180,
+    "enemy_resource": 180,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "blade",
+      "archer",
+      "bomber"
+    ],
+    "ai_interval": 2.0,
+    "hold_seconds": 55,
+    "star_time": 205,
+    "star_losses": 12,
+    "movement_scale": 0.35,
+    "base_defense_damage": 28,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 224,
+    "reward_replay": 15,
+    "difficulty": "Vừa",
+    "terrain_hint": "3 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": ""
+  },
+  {
+    "id": 14,
+    "name": "Hai cầu tranh chấp",
+    "chapter": 2,
+    "chapter_name": "Hẻm đá hai cầu",
+    "map_variant": 3,
+    "seed": 5934,
+    "bridges": [
+      6,
+      17
+    ],
+    "obstacles": [
+      [
+        19,
+        28
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        15,
+        29
+      ]
+    ],
+    "objective": "destroy",
+    "time_limit": 240,
+    "start_resource": 180,
+    "enemy_resource": 180,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "blade",
+      "archer",
+      "bomber"
+    ],
+    "ai_interval": 2.0,
+    "hold_seconds": 55,
+    "star_time": 205,
+    "star_losses": 12,
+    "movement_scale": 0.35,
+    "base_defense_damage": 28,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 232,
+    "reward_replay": 15,
+    "difficulty": "Vừa",
+    "terrain_hint": "2 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": ""
+  },
+  {
+    "id": 15,
+    "name": "Pháo binh xuất trận",
+    "chapter": 2,
+    "chapter_name": "Hẻm đá hai cầu",
+    "map_variant": 4,
+    "seed": 6065,
+    "bridges": [
+      11
+    ],
+    "obstacles": [
+      [
+        3,
+        7
+      ],
+      [
+        18,
+        28
+      ],
+      [
+        8,
+        5
+      ],
+      [
+        15,
+        30
+      ]
+    ],
+    "objective": "destroy",
+    "time_limit": 240,
+    "start_resource": 180,
+    "enemy_resource": 180,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "blade",
+      "archer",
+      "bomber"
+    ],
+    "ai_interval": 2.0,
+    "hold_seconds": 55,
+    "star_time": 205,
+    "star_losses": 12,
+    "movement_scale": 0.35,
+    "base_defense_damage": 28,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 240,
+    "reward_replay": 15,
+    "difficulty": "Vừa",
+    "terrain_hint": "1 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": "siege"
+  },
+  {
+    "id": 16,
+    "name": "Vượt cửa đá",
+    "chapter": 2,
+    "chapter_name": "Hẻm đá hai cầu",
+    "map_variant": 5,
+    "seed": 6196,
+    "bridges": [
+      5,
+      12,
+      18
+    ],
+    "obstacles": [
+      [
+        4,
+        7
+      ],
+      [
+        17,
+        28
+      ],
+      [
+        8,
+        6
+      ],
+      [
+        15,
+        29
+      ]
+    ],
+    "objective": "destroy",
+    "time_limit": 240,
+    "start_resource": 180,
+    "enemy_resource": 180,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "guard",
+      "archer",
+      "medic"
+    ],
+    "ai_interval": 2.0,
+    "hold_seconds": 55,
+    "star_time": 205,
+    "star_losses": 12,
+    "movement_scale": 0.35,
+    "base_defense_damage": 28,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 248,
+    "reward_replay": 15,
+    "difficulty": "Vừa",
+    "terrain_hint": "3 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": ""
+  },
+  {
+    "id": 17,
+    "name": "Cứu viện trạm gác",
+    "chapter": 2,
+    "chapter_name": "Hẻm đá hai cầu",
+    "map_variant": 6,
+    "seed": 6327,
+    "bridges": [
+      6,
+      17
+    ],
+    "obstacles": [
+      [
+        5,
+        7
+      ],
+      [
+        19,
+        28
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        15,
+        30
+      ]
+    ],
+    "objective": "hold",
+    "time_limit": 240,
+    "start_resource": 180,
+    "enemy_resource": 180,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "guard",
+      "archer",
+      "medic"
+    ],
+    "ai_interval": 2.0,
+    "hold_seconds": 55,
+    "star_time": 205,
+    "star_losses": 12,
+    "movement_scale": 0.35,
+    "base_defense_damage": 28,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 256,
+    "reward_replay": 15,
+    "difficulty": "Vừa",
+    "terrain_hint": "2 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": ""
+  },
+  {
+    "id": 18,
+    "name": "Đợt tấn công đỏ",
+    "chapter": 2,
+    "chapter_name": "Hẻm đá hai cầu",
+    "map_variant": 7,
+    "seed": 6458,
+    "bridges": [
+      11
+    ],
+    "obstacles": [
+      [
+        6,
+        7
+      ],
+      [
+        18,
+        28
+      ],
+      [
+        8,
+        5
+      ],
+      [
+        15,
+        29
+      ]
+    ],
+    "objective": "survive",
+    "time_limit": 240,
+    "start_resource": 180,
+    "enemy_resource": 180,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "guard",
+      "archer",
+      "medic"
+    ],
+    "ai_interval": 2.0,
+    "hold_seconds": 55,
+    "star_time": 205,
+    "star_losses": 12,
+    "movement_scale": 0.35,
+    "base_defense_damage": 28,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 264,
+    "reward_replay": 15,
+    "difficulty": "Vừa",
+    "terrain_hint": "1 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": ""
+  },
+  {
+    "id": 19,
+    "name": "Thế gọng kìm",
+    "chapter": 2,
+    "chapter_name": "Hẻm đá hai cầu",
+    "map_variant": 8,
+    "seed": 6589,
+    "bridges": [
+      5,
+      12,
+      18
+    ],
+    "obstacles": [
+      [
+        3,
+        7
+      ],
+      [
+        17,
+        28
+      ],
+      [
+        8,
+        6
+      ],
+      [
+        15,
+        30
+      ]
+    ],
+    "objective": "capture",
+    "time_limit": 240,
+    "start_resource": 180,
+    "enemy_resource": 180,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "guard",
+      "bomber",
+      "siege"
+    ],
+    "ai_interval": 2.0,
+    "hold_seconds": 55,
+    "star_time": 205,
+    "star_losses": 12,
+    "movement_scale": 0.35,
+    "base_defense_damage": 28,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 272,
+    "reward_replay": 15,
+    "difficulty": "Vừa",
+    "terrain_hint": "3 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": ""
+  },
+  {
+    "id": 20,
+    "name": "Thành đôi cầu",
+    "chapter": 2,
+    "chapter_name": "Hẻm đá hai cầu",
+    "map_variant": 9,
+    "seed": 6720,
+    "bridges": [
+      6,
+      17
+    ],
+    "obstacles": [
+      [
+        4,
+        7
+      ],
+      [
+        19,
+        28
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        15,
+        29
+      ]
+    ],
+    "objective": "destroy",
+    "time_limit": 240,
+    "start_resource": 180,
+    "enemy_resource": 180,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "guard",
+      "bomber",
+      "siege"
+    ],
+    "ai_interval": 2.0,
+    "hold_seconds": 55,
+    "star_time": 205,
+    "star_losses": 12,
+    "movement_scale": 0.35,
+    "base_defense_damage": 28,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 280,
+    "reward_replay": 15,
+    "difficulty": "Vừa",
+    "terrain_hint": "2 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": ""
+  },
+  {
+    "id": 21,
+    "name": "Đổ bộ đảo xanh",
+    "chapter": 3,
+    "chapter_name": "Quần đảo bình minh",
+    "map_variant": 0,
+    "seed": 6851,
+    "bridges": [
+      6,
+      17
+    ],
+    "obstacles": [
+      [
+        3,
+        7
+      ],
+      [
+        19,
+        28
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        15,
+        30
+      ]
+    ],
+    "objective": "destroy",
+    "time_limit": 300,
+    "start_resource": 180,
+    "enemy_resource": 180,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "guard",
+      "bomber",
+      "siege"
+    ],
+    "ai_interval": 1.2,
+    "hold_seconds": 65,
+    "star_time": 260,
+    "star_losses": 12,
+    "movement_scale": 0.35,
+    "base_defense_damage": 28,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 288,
+    "reward_replay": 15,
+    "difficulty": "Khó",
+    "terrain_hint": "2 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": ""
+  },
+  {
+    "id": 22,
+    "name": "Tiền đồn cát",
+    "chapter": 3,
+    "chapter_name": "Quần đảo bình minh",
+    "map_variant": 1,
+    "seed": 6982,
+    "bridges": [
+      11
+    ],
+    "obstacles": [
+      [
+        4,
+        7
+      ],
+      [
+        18,
+        28
+      ],
+      [
+        8,
+        5
+      ],
+      [
+        15,
+        29
+      ]
+    ],
+    "objective": "hold",
+    "time_limit": 300,
+    "start_resource": 180,
+    "enemy_resource": 180,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "blade",
+      "guard",
+      "medic",
+      "siege"
+    ],
+    "ai_interval": 1.2,
+    "hold_seconds": 65,
+    "star_time": 260,
+    "star_losses": 12,
+    "movement_scale": 0.35,
+    "base_defense_damage": 28,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 296,
+    "reward_replay": 15,
+    "difficulty": "Khó",
+    "terrain_hint": "1 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": ""
+  },
+  {
+    "id": 23,
+    "name": "Cầu giữa đảo",
+    "chapter": 3,
+    "chapter_name": "Quần đảo bình minh",
+    "map_variant": 2,
+    "seed": 7113,
+    "bridges": [
+      5,
+      12,
+      18
+    ],
+    "obstacles": [
+      [
+        17,
+        28
+      ],
+      [
+        8,
+        6
+      ],
+      [
+        15,
+        30
+      ]
+    ],
+    "objective": "capture",
+    "time_limit": 300,
+    "start_resource": 180,
+    "enemy_resource": 180,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "blade",
+      "guard",
+      "medic",
+      "siege"
+    ],
+    "ai_interval": 1.2,
+    "hold_seconds": 65,
+    "star_time": 260,
+    "star_losses": 12,
+    "movement_scale": 0.35,
+    "base_defense_damage": 28,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 304,
+    "reward_replay": 15,
+    "difficulty": "Khó",
+    "terrain_hint": "3 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": ""
+  },
+  {
+    "id": 24,
+    "name": "Đội quân công thành",
+    "chapter": 3,
+    "chapter_name": "Quần đảo bình minh",
+    "map_variant": 3,
+    "seed": 7244,
+    "bridges": [
+      6,
+      17
+    ],
+    "obstacles": [
+      [
+        19,
+        28
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        15,
+        29
+      ]
+    ],
+    "objective": "destroy",
+    "time_limit": 300,
+    "start_resource": 180,
+    "enemy_resource": 180,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "blade",
+      "guard",
+      "medic",
+      "siege"
+    ],
+    "ai_interval": 1.2,
+    "hold_seconds": 65,
+    "star_time": 260,
+    "star_losses": 12,
+    "movement_scale": 0.35,
+    "base_defense_damage": 28,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 312,
+    "reward_replay": 15,
+    "difficulty": "Khó",
+    "terrain_hint": "2 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": ""
+  },
+  {
+    "id": 25,
+    "name": "Ba tuyến tiếp tế",
+    "chapter": 3,
+    "chapter_name": "Quần đảo bình minh",
+    "map_variant": 4,
+    "seed": 7375,
+    "bridges": [
+      11
+    ],
+    "obstacles": [
+      [
+        3,
+        7
+      ],
+      [
+        18,
+        28
+      ],
+      [
+        8,
+        5
+      ],
+      [
+        15,
+        30
+      ]
+    ],
+    "objective": "capture",
+    "time_limit": 300,
+    "start_resource": 180,
+    "enemy_resource": 180,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "blade",
+      "guard",
+      "medic",
+      "siege"
+    ],
+    "ai_interval": 1.2,
+    "hold_seconds": 65,
+    "star_time": 260,
+    "star_losses": 12,
+    "movement_scale": 0.35,
+    "base_defense_damage": 28,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 320,
+    "reward_replay": 15,
+    "difficulty": "Khó",
+    "terrain_hint": "1 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": ""
+  },
+  {
+    "id": 26,
+    "name": "Cơn sóng quân địch",
+    "chapter": 3,
+    "chapter_name": "Quần đảo bình minh",
+    "map_variant": 5,
+    "seed": 7506,
+    "bridges": [
+      5,
+      12,
+      18
+    ],
+    "obstacles": [
+      [
+        4,
+        7
+      ],
+      [
+        17,
+        28
+      ],
+      [
+        8,
+        6
+      ],
+      [
+        15,
+        29
+      ]
+    ],
+    "objective": "survive",
+    "time_limit": 300,
+    "start_resource": 180,
+    "enemy_resource": 180,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "blade",
+      "guard",
+      "medic",
+      "siege"
+    ],
+    "ai_interval": 1.2,
+    "hold_seconds": 65,
+    "star_time": 260,
+    "star_losses": 12,
+    "movement_scale": 0.35,
+    "base_defense_damage": 28,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 328,
+    "reward_replay": 15,
+    "difficulty": "Khó",
+    "terrain_hint": "3 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": ""
+  },
+  {
+    "id": 27,
+    "name": "Vòng vây đảo đá",
+    "chapter": 3,
+    "chapter_name": "Quần đảo bình minh",
+    "map_variant": 6,
+    "seed": 7637,
+    "bridges": [
+      6,
+      17
+    ],
+    "obstacles": [
+      [
+        5,
+        7
+      ],
+      [
+        19,
+        28
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        15,
+        30
+      ]
+    ],
+    "objective": "destroy",
+    "time_limit": 300,
+    "start_resource": 180,
+    "enemy_resource": 180,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "blade",
+      "guard",
+      "medic",
+      "siege"
+    ],
+    "ai_interval": 1.2,
+    "hold_seconds": 65,
+    "star_time": 260,
+    "star_losses": 12,
+    "movement_scale": 0.35,
+    "base_defense_damage": 28,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 336,
+    "reward_replay": 15,
+    "difficulty": "Khó",
+    "terrain_hint": "2 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": ""
+  },
+  {
+    "id": 28,
+    "name": "Giành hai trạm",
+    "chapter": 3,
+    "chapter_name": "Quần đảo bình minh",
+    "map_variant": 7,
+    "seed": 7768,
+    "bridges": [
+      11
+    ],
+    "obstacles": [
+      [
+        6,
+        7
+      ],
+      [
+        18,
+        28
+      ],
+      [
+        8,
+        5
+      ],
+      [
+        15,
+        29
+      ]
+    ],
+    "objective": "capture",
+    "time_limit": 300,
+    "start_resource": 180,
+    "enemy_resource": 180,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "blade",
+      "guard",
+      "medic",
+      "siege"
+    ],
+    "ai_interval": 1.2,
+    "hold_seconds": 65,
+    "star_time": 260,
+    "star_losses": 12,
+    "movement_scale": 0.35,
+    "base_defense_damage": 28,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 344,
+    "reward_replay": 15,
+    "difficulty": "Khó",
+    "terrain_hint": "1 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": ""
+  },
+  {
+    "id": 29,
+    "name": "Giữ đảo cuối cùng",
+    "chapter": 3,
+    "chapter_name": "Quần đảo bình minh",
+    "map_variant": 8,
+    "seed": 7899,
+    "bridges": [
+      5,
+      12,
+      18
+    ],
+    "obstacles": [
+      [
+        3,
+        7
+      ],
+      [
+        17,
+        28
+      ],
+      [
+        8,
+        6
+      ],
+      [
+        15,
+        30
+      ]
+    ],
+    "objective": "hold",
+    "time_limit": 300,
+    "start_resource": 180,
+    "enemy_resource": 180,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "blade",
+      "guard",
+      "medic",
+      "siege"
+    ],
+    "ai_interval": 1.2,
+    "hold_seconds": 65,
+    "star_time": 260,
+    "star_losses": 12,
+    "movement_scale": 0.35,
+    "base_defense_damage": 28,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 352,
+    "reward_replay": 15,
+    "difficulty": "Khó",
+    "terrain_hint": "3 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": ""
+  },
+  {
+    "id": 30,
+    "name": "Bình minh tí hon",
+    "chapter": 3,
+    "chapter_name": "Quần đảo bình minh",
+    "map_variant": 9,
+    "seed": 8030,
+    "bridges": [
+      6,
+      17
+    ],
+    "obstacles": [
+      [
+        4,
+        7
+      ],
+      [
+        19,
+        28
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        15,
+        29
+      ]
+    ],
+    "objective": "destroy",
+    "time_limit": 300,
+    "start_resource": 180,
+    "enemy_resource": 180,
+    "income": 8,
+    "enemy_income": 8,
+    "base_hp": 1500,
+    "enemy_roster": [
+      "blade",
+      "guard",
+      "medic",
+      "siege"
+    ],
+    "ai_interval": 1.2,
+    "hold_seconds": 65,
+    "star_time": 260,
+    "star_losses": 12,
+    "movement_scale": 0.35,
+    "base_defense_damage": 28,
+    "base_defense_interval": 1.0,
+    "base_defense_range": 165,
+    "reward_first": 360,
+    "reward_replay": 15,
+    "difficulty": "Khó",
+    "terrain_hint": "2 tuyến cầu; nước và đá chặn đường.",
+    "suggestion": "Giữ vệ binh trước cung thủ. Chiếm trạm để triển khai gần đối phương.",
+    "unlock_unit": ""
+  }
+]

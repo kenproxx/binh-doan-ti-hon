@@ -1,0 +1,92 @@
+# Android: build, cài đặt và ký phát hành
+
+Dự án dùng **Godot 4.4.1 stable**, **OpenJDK 17**, Android SDK **Platform 34 / Build Tools 34.0.0**, và template export đúng phiên bản. Hai preset đã có trong `export_presets.cfg`:
+
+| Preset | Định dạng | Kiến trúc | Mục đích |
+| --- | --- | --- | --- |
+| Android Debug | APK, template có sẵn | arm64-v8a + x86_64 | Cài thử trên điện thoại ARM64 hoặc emulator x86_64 |
+| Android Release AAB | AAB, Gradle | arm64-v8a + x86_64 | Bản phát hành ký bằng khóa của chủ ứng dụng |
+
+Package: `com.binhdoantihon.game`; versionName `0.1.0`, versionCode `1`. Màn hình portrait (480 × 854, scale theo canvas). Preset không yêu cầu Internet hoặc access_network_state; nội dung và lưu tiến trình hoạt động ngoại tuyến.
+
+## 1. Chuẩn bị
+
+Cài Godot 4.4.1, JDK 17, `curl`, `unzip`, `python3`. Script sau tải bộ công cụ Android Linux x86_64 và các template Android chính thức. Xem giấy phép Android SDK trước khi chạy: script chấp nhận giấy phép để cài SDK.
+
+```bash
+export GODOT_BIN=/path/to/Godot_v4.4.1-stable_linux.x86_64
+export JAVA_HOME=/path/to/jdk-17
+export ANDROID_HOME="$HOME/Android/Sdk"
+./tools/install_android_tools.sh
+```
+
+Nếu đã có SDK, chỉ cần đặt `ANDROID_HOME` tới thư mục đó. Template mặc định ở `$HOME/.local/share/godot/export_templates/4.4.1.stable` (hoặc dưới `XDG_DATA_HOME` nếu đã đặt biến này). APK dùng template có sẵn, không cần Gradle. AAB dùng Gradle wrapper trong template; lần đầu cần mạng để tải Gradle và các thư viện Maven. NDK/CMake chỉ cần khi biên dịch plugin native; không cần để đóng gói template có sẵn.
+
+## 2. Build APK debug
+
+```bash
+./tools/build_android.sh debug
+```
+
+Kết quả: `build/binh-doan-ti-hon-debug.apk`. Script chạy import, export, kiểm tra chữ ký bằng `apksigner`, in manifest bằng `aapt`. Đây là chữ ký debug, không dùng đưa lên cửa hàng. Script tạo editor settings riêng trong `build/`, để cấu hình SDK/JDK không ảnh hưởng editor cá nhân.
+
+Cài trên thiết bị đã bật USB debugging:
+
+```bash
+"$ANDROID_HOME/platform-tools/adb" devices
+"$ANDROID_HOME/platform-tools/adb" install -r build/binh-doan-ti-hon-debug.apk
+"$ANDROID_HOME/platform-tools/adb" shell am start -n com.binhdoantihon.game/com.godot.game.GodotApp
+```
+
+Nếu bản cài cũ ký bằng khóa khác, Android từ chối cập nhật. Gỡ bản cũ sẽ xóa tiến trình lưu trên thiết bị; sao lưu trước nếu cần. Kiểm tra debug APK:
+
+```bash
+"$ANDROID_HOME/build-tools/34.0.0/apksigner" verify --verbose build/binh-doan-ti-hon-debug.apk
+"$ANDROID_HOME/build-tools/34.0.0/aapt" dump badging build/binh-doan-ti-hon-debug.apk
+"$ANDROID_HOME/build-tools/34.0.0/aapt" dump permissions build/binh-doan-ti-hon-debug.apk
+```
+
+## 3. Build AAB phát hành
+
+Khóa ký là tài sản của chủ ứng dụng. Tạo ngoài repository, giữ bản sao an toàn; không commit khóa hoặc mật khẩu:
+
+```bash
+keytool -genkeypair -keystore "$HOME/binh-upload.keystore" \
+  -alias binh-upload -keyalg RSA -keysize 2048 -validity 10000
+export GODOT_ANDROID_KEYSTORE_RELEASE_PATH="$HOME/binh-upload.keystore"
+export GODOT_ANDROID_KEYSTORE_RELEASE_USER=binh-upload
+read -rsp 'Mật khẩu khóa: ' GODOT_ANDROID_KEYSTORE_RELEASE_PASSWORD
+printf '\n'
+export GODOT_ANDROID_KEYSTORE_RELEASE_PASSWORD
+./tools/build_android.sh release
+unset GODOT_ANDROID_KEYSTORE_RELEASE_PASSWORD
+```
+
+Mật khẩu keystore và key phải giống nhau với Godot 4.4.1. Script dừng ngay nếu chưa có biến ký phát hành; mật khẩu không được ghi vào preset. Kết quả: `build/binh-doan-ti-hon-release.aab`. Kiểm tra chữ ký AAB bằng `jarsigner -verify`; AAB không thể cài trực tiếp bằng `adb install`. Dùng Google Play internal testing hoặc `bundletool` để tạo APK từ AAB.
+
+Preset API34 được ghim theo toolchain Godot 4.4. Trước khi gửi Google Play, kiểm tra yêu cầu target API hiện hành, nâng Godot/template/SDK phù hợp và tăng `version/code`. Cấu hình này không tuyên bố đã đáp ứng mọi yêu cầu cửa hàng ở thời điểm gửi.
+
+## 4. Emulator tùy chọn
+
+```bash
+"$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" \
+  'emulator' 'system-images;android-34;google_apis;x86_64'
+printf 'no\n' | "$ANDROID_HOME/cmdline-tools/latest/bin/avdmanager" create avd \
+  -n binh-api34 -k 'system-images;android-34;google_apis;x86_64' --device pixel_2
+"$ANDROID_HOME/emulator/emulator" -avd binh-api34
+```
+
+Nếu host không có `/dev/kvm`, có thể thử `-accel off -gpu swiftshader_indirect -no-window -no-audio`, nhưng chậm đáng kể. Kiểm thử emulator không thay thế kiểm thử touch, âm thanh, hiệu năng và vòng đời trên điện thoại thật.
+
+## Nguồn chính thức
+
+- [Godot 4.4: Exporting for Android](https://docs.godotengine.org/en/4.4/tutorials/export/exporting_for_android.html)
+- [Godot 4.4: Gradle builds](https://docs.godotengine.org/en/4.4/tutorials/export/android_gradle_build.html)
+- [Android: App signing](https://developer.android.com/studio/publish/app-signing)
+
+## Kết quả xác minh trong môi trường xây dựng
+
+- Đã export APK debug bằng template Godot 4.4.1 và xác minh chữ ký APK v1/v2/v3 bằng `apksigner`.
+- Đã kiểm tra manifest bằng `aapt`: package đúng, portrait, có ARM64 và x86_64, không yêu cầu quyền Internet.
+- Đã thử export AAB với khóa kiểm thử tạm thời ngoài repository. Gradle wrapper không tải được Gradle 8.2 do Java báo `Network is unreachable`; **chưa tạo AAB phát hành**. Script/preset ký phát hành sẵn sàng để chạy ở máy có mạng Gradle/Maven và khóa của chủ ứng dụng.
+- Đã cài Android Emulator/API34 x86_64 và thử khởi động CPU/software (host không có KVM). Lần thử trên AVD riêng `binh_final` đã tránh khóa nhưng QEMU CPU/main-loop bị treo rồi emulator segfault trước khi Android boot; chưa có lần cài/chạy APK thành công trong emulator. **Chưa kiểm thử trên điện thoại thật.**

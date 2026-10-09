@@ -1,0 +1,11 @@
+.godot/
+*.apk
+*.aab
+*.zip
+*.keystore
+android/build/
+build/
+.superpowers/
+
+__pycache__/
+*.pyc
