@@ -3,6 +3,7 @@ import pathlib
 import subprocess
 import sys
 import time
+from android_ui import immersive_confirm_center
 
 PACKAGE = "com.binhdoantihon.game"
 APK = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else "build/binh-doan-ti-hon-debug.apk")
@@ -57,6 +58,14 @@ try:
             if time.monotonic() >= deadline:
                 raise
             time.sleep(0.5)
+    # First fullscreen launch has a real Android overlay that consumes touches.
+    adb("shell", "uiautomator", "dump", "/sdcard/bdth-ui.xml")
+    system_xml = adb("shell", "cat", "/sdcard/bdth-ui.xml")
+    center = immersive_confirm_center(system_xml)
+    if center is not None:
+        adb("shell", "input", "tap", str(center[0]), str(center[1]))
+        time.sleep(2)
+        print("PASS: Android fullscreen confirmation dismissed", flush=True)
     (OUT / "main.png").write_bytes(adb("exec-out", "screencap", "-p", binary=True))
     def toggle_music(expected):
         adb("shell", "input", "tap", "240", "181")

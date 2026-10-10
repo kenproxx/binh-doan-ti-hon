@@ -76,3 +76,7 @@ Có preset APK debug và AAB release, script build cùng hướng dẫn ký. Th�
 - Review độc lập không tìm thấy Critical; đã sửa tài liệu cũ, bổ sung lượt Phá thành và smoke cảm ứng phải thay đổi setting đã lưu.
 - GitHub Actions kiểm thử + build + emulatorAPI34 được bổ sung. **Chưa tính là Android PASS cho đến khi job emulator thành công.** Script chạm cài đặt, xác minh file checksum và giá trị đổi trước/sau Home, Back, force-stop/relaunch; không thay thế tutorial/battle nghiệm thu Android.
 - AAB0.2.0 thử lại với khóa kiểm tra tạm ngoài source và Java proxy settings: Gradle8.2 vẫn báo `Network is unreachable`. Không có AAB mới; không ký bằng khóa phát hành thật.
+
+## Tương thích cập nhật APK
+
+Đối chiếu chứng thư0.1.0 và0.2.0 xác nhận khóa debug khác nhau; không thể cài đè. Khóa0.2.0 đã giữ lại cho các beta tiếp theo. Nếu đã cài0.1.0, cần sao lưu trước khi gỡ; hướng dẫn ADB và giới hạn xác minh ở docs/android.md. Không coi việc xác minh ZIP/chữ ký là kiểm thử nâng cấp tại chỗ.

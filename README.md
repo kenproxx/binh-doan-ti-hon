@@ -64,3 +64,5 @@ Tests dùng thư mục hồ sơ kiểm thử riêng hoặc khôi phục snapshot
 Chạy toàn bộ: `GODOT_BIN=/path/to/godot python3 tools/run_tests.py`. Thử đội hình Phá thành: `godot --headless --path . --script tests/test_acceptance.gd -- --siege`.
 
 GitHub Actions `.github/workflows/android.yml` chạy kiểm thử, build APK và smoke cảm ứng/cài đặt/lifecycle trên giả lậpAPI34; xem kết quả cụ thể trong tab Actions trước khi coi Android pass. `tools/android_smoke.py` chỉ dành cho giả lập CI dùng một lần, không phải checklist nghiệm thu gameplay hoặc máy thật.
+
+**Nếu đã cài0.1.0:** APK0.2.0 dùng chứng thư debug khác. Không gỡ bản cũ trước khi sao lưu tiến độ; xem mục chuyển dữ liệu trong [Android](docs/android.md). Các bản beta tiếp theo cần dùng lại khóa0.2.0 đã giữ riêng.

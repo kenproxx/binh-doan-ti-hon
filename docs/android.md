@@ -96,3 +96,29 @@ Nếu host không có `/dev/kvm`, có thể thử `-accel off -gpu swiftshader_i
 Workflow `.github/workflows/android.yml` chạy bộ7suite, export debugAPK, dùng giả lậpx86_64/API34 có KVM và lưu artifact APK/log/screenshot14ngày. Script `tools/android_smoke.py` giới hạn thiết bị `emulator-*`, dùng viewport480×854, chạm toggle nhạc và đọc profile checksum để xác minh UI/lưu/lifecycle. Chỉ smoke menu/cài đặt; chưa kiểm thử battle Android toàn trình.
 
 Bản0.2.0 versionCode2. Thử AAB mới với khóa validation tạm vẫn dừng ở downloadGradle8.2 `Network is unreachable`, kể cả cấu hình proxyJava. Không có AAB mới và không thể coi CI chưa chạy là pass.
+
+## Chữ ký debug và chuyển từ0.1.0
+
+Đã đối chiếu chứng thư APK được bàn giao:0.1.0 có SHA256 chứng thư `89fb0e577fa621010b16cda755c23205a816fbea1bdac7ba70ae148f38c3dc71`;0.2.0 có `7b039bf506b96f5a41cda263e10a39c7f86e9355330de4a17d881c5dce7d47e2`. Khóa debug cũ không còn trong môi trường. **Không cài đè0.2.0 lên0.1.0. Không gỡ bản cũ trước khi sao lưu tiến độ.** Nếu chưa cài0.1.0 thì cài mới bình thường.
+
+Với bản debug và thiết bị có ADB, sao lưu hồ sơ trước khi đổi APK:
+```bash
+adb exec-out run-as com.binhdoantihon.game cat files/profile.json > profile-before-upgrade.json
+```
+Kiểm tra file JSON có `payload` và `checksum`, giữ file an toàn. Sau khi đã sao lưu, người dùng có thể gỡ bản cũ rồi cài0.2.0. Mở một lần, đóng ứng dụng và khôi phục:
+```bash
+adb push profile-before-upgrade.json /data/local/tmp/bdth-profile.json
+adb shell am force-stop com.binhdoantihon.game
+adb shell run-as com.binhdoantihon.game cp /data/local/tmp/bdth-profile.json files/profile.json
+adb shell run-as com.binhdoantihon.game cp files/profile.json files/profile.backup.json
+```
+Đây là hướng dẫn chuyển dữ liệu debug; chưa chạy trên điện thoại thật. Không có thao tác tự động gỡ ứng dụng.
+
+Khóa debug0.2.0 đã giữ lại riêng với tên `binh-doan-ti-hon-beta-debug.keystore` để các bản beta tiếp theo dùng cùng chứng thư; không đưa private key vào GitHub. Khi build bản beta cập nhật, đặt đủ ba biến Godot:
+```bash
+export GODOT_ANDROID_KEYSTORE_DEBUG_PATH=/absolute/path/binh-doan-ti-hon-beta-debug.keystore
+export GODOT_ANDROID_KEYSTORE_DEBUG_USER=androiddebugkey
+export GODOT_ANDROID_KEYSTORE_DEBUG_PASSWORD=android
+bash tools/build_android.sh debug
+```
+Khóa này chỉ dành cho thử nghiệm, không dùng phát hành. APK từ CI tự tạo khóa debug riêng nên không coi artifactCI là bản cập nhật cài đè APK được bàn giao. Bản phát hành phải dùng khóa của chủ game đã lưu ổn định.
