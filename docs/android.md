@@ -89,7 +89,7 @@ Nếu host không có `/dev/kvm`, có thể thử `-accel off -gpu swiftshader_i
 - Đã export APK debug bằng template Godot 4.4.1 và xác minh chữ ký APK v1/v2/v3 bằng `apksigner`.
 - Đã kiểm tra manifest bằng `aapt`: package đúng, portrait, có ARM64 và x86_64, không yêu cầu quyền Internet.
 - Đã thử export AAB với khóa kiểm thử tạm thời ngoài repository. Gradle wrapper không tải được Gradle 8.2 do Java báo `Network is unreachable`; **chưa tạo AAB phát hành**. Script/preset ký phát hành sẵn sàng để chạy ở máy có mạng Gradle/Maven và khóa của chủ ứng dụng.
-- Đã cài Android Emulator/API34 x86_64 và thử khởi động CPU/software (host không có KVM). Lần thử trên AVD riêng `binh_final` đã tránh khóa nhưng QEMU CPU/main-loop bị treo rồi emulator segfault trước khi Android boot; chưa có lần cài/chạy APK thành công trong emulator. **Chưa kiểm thử trên điện thoại thật.**
+- Đã cài Android Emulator/API34 x86_64 và thử khởi động CPU/software (host không có KVM). Lần thử trên AVD riêng `binh_final` đã tránh khóa nhưng QEMU CPU/main-loop bị treo rồi emulator segfault trước khi Android boot; lần thử local này không boot để cài/chạy APK; CI có KVM đã kiểm tra riêng ở phần dưới. **Chưa kiểm thử trên điện thoại thật.**
 
 ## CI và bản0.2.0
 
@@ -122,3 +122,7 @@ export GODOT_ANDROID_KEYSTORE_DEBUG_PASSWORD=android
 bash tools/build_android.sh debug
 ```
 Khóa này chỉ dành cho thử nghiệm, không dùng phát hành. APK từ CI tự tạo khóa debug riêng nên không coi artifactCI là bản cập nhật cài đè APK được bàn giao. Bản phát hành phải dùng khóa của chủ game đã lưu ổn định.
+
+Kết quả thực tế: [CI38016747465](https://github.com/kenproxx/binh-doan-ti-hon/actions/runs/38016747465) SUCCESS: cài/mở APK, chạm thay music đã lưu, Home/quay lại, Back, vào battle/triển khai quân, ghi tutorial deploy, force-stop/relaunch giữ hồ sơ. Dùng SwANGLE (legacy SwiftShader gây lỗi shader trong lần trước). Chưa chơi trận thắng, hướng dẫn1–4 hoặc30ải toàn trình trên Android; chưa kiểm thử điện thoại thật/FPS. Xem docs/testing.md để đọc phạm vi và lịch sử lỗi fixture.
+
+Ảnh battle xác nhận một quân và cooldown Mưa bom30s→29s. Chưa xác nhận overlayPause/resume trong battle: screenshotBack chụp ngay không hiện overlay và test chỉ kiểm tra process. Cần nghiệm thu riêng, không suy ra pause/resume từ kết quả smoke.

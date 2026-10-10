@@ -2,13 +2,13 @@
 
 ## Quyết định nghiệm thu
 
-Đã có toàn bộ vòng chơi và 30 ải. **Chưa đạt nghiệm thu Android hoàn chỉnh**: chưa cài/chơi trên thiết bị Android, chưa đo FPS; nhịp 3–5 phút mới được kiểm tra bằng mô phỏng, chưa playtest người thật. Không gọi bản này là bản phát hành production.
+Đã có toàn bộ vòng chơi và 30 ải. **Chưa đạt nghiệm thu Android hoàn chỉnh**: chưa chơi toàn trình trên Android hoặc kiểm thử điện thoại thật, chưa đo FPS; nhịp 3–5 phút mới được kiểm tra bằng mô phỏng, chưa playtest người thật. Không gọi bản này là bản phát hành production.
 
 Godot 4.4.1 stable, GDScript, Compatibility. Mã sản phẩm cuối đã được export lại vào APK; các test và tài liệu bổ sung sau đó không thay đổi mã trong APK.
 
 ## Kiểm thử tự động
 
-Lần chạy cuối: Python dữ liệu/UI hệ thống **5/5**; Godot **audio, profile, battle, objectives, UI, acceptance** đều exit 0 và không có FAIL/ERROR trong log cuối (`tools/run_tests.py`: **7/7 PASS**). Acceptance thắng **30/30** từ hồ sơ mới, dùng tối đa bốn loại quân thực sự đã mở, tài nguyên/cooldown thật và nâng cấp mua bằng tiền kiếm được. Test chiến dịch không sửa HP hoặc tài nguyên. Các test đơn vị dùng fixture để cô lập timeout/lỗi lưu được ghi riêng trong code.
+Lần chạy cuối: Python dữ liệu/UI hệ thống **6/6**; Godot **audio, profile, battle, objectives, UI, acceptance** đều exit 0 và không có FAIL/ERROR trong log cuối (`tools/run_tests.py`: **7/7 PASS**). Acceptance thắng **30/30** từ hồ sơ mới, dùng tối đa bốn loại quân thực sự đã mở, tài nguyên/cooldown thật và nâng cấp mua bằng tiền kiếm được. Test chiến dịch không sửa HP hoặc tài nguyên. Các test đơn vị dùng fixture để cô lập timeout/lỗi lưu được ghi riêng trong code.
 
 | Tiêu chí | Bằng chứng | Kết quả |
 |---|---|---|
@@ -48,7 +48,7 @@ SHA256:
 74ea7a66d3c04e273336753d6aed223ff3685d1987af0bc9ce15751a07205efb
 ```
 
-**Chưa xác minh cài và mở APK trên Android.** Host không có KVM. Đã cài SDK và tạo AVD 34 riêng; software CPU emulator bị treo QEMU rồi segfault trước boot. Không có điện thoại USB trong môi trường. Điều này không chứng minh APK lỗi, cũng không được coi là cài đặt pass.
+**CI Android API34/x86_64 đã PASS cài, mở, chạm cài đặt/lưu, Home/quay lại, Back, triển khai quân và force-stop/relaunch giữ hồ sơ.** Host local không có KVM. Đã cài SDK và tạo AVD 34 riêng; software CPU emulator bị treo QEMU rồi segfault trước boot. Không có điện thoại USB trong môi trường. Điều này không chứng minh APK lỗi, cũng không được coi là cài đặt pass.
 
 Có preset APK debug và AAB release, script build cùng hướng dẫn ký. Thử AAB bằng khóa tạm bên ngoài repo dừng ở Gradle 8.2: Java download báo `Network is unreachable`. Chưa tạo AAB và chưa gửi Google Play. API 34 được ghim theo Godot 4.4; trước gửi cửa hàng phải kiểm tra target API hiện hành và nâng toolchain phù hợp.
 
@@ -59,7 +59,7 @@ Có preset APK debug và AAB release, script build cùng hướng dẫn ký. Th�
 - Pixel art và âm thanh nguyên bản ở mức đơn giản; chưa đạt mức hoàn thiện thương mại. AI chưa được playtest rộng về chọn tuyến.
 - Giới hạn tổng 96 quân, AStarGrid và timer cập nhật đường; target/neighbor vẫn O(n²) với cap. Chưa profiling nhiệt, memory hoặc FPS trên điện thoại. 60 FPS là mục tiêu; chế độ thấp cap 30.
 - Dummy mixer ở chế độ headless giữ playback khi các action chạy dồn trong một frame. Đã tách chế độ headless: vẫn tải/kiểm tra WAV, loop/settings nhưng không tạo playback thật. Bộ kiểm thử cuối sạch; chưa nghe hoặc soak âm thanh trên điện thoại và không dùng kết quả này chứng minh steady-state memory của Android.
-- Back/background đã kiểm tra notification logic; safe area đã có code. Tai thỏ, tỉ lệ khác, multitouch và Android process kill chưa kiểm chứng.
+- Back/background đã kiểm tra notification logic; safe area đã có code. Giả lập Pixel7 đã kiểm tra menu và triển khai ở480×854; các tỉ lệ khác, multitouch, máy thật và kill do OS chưa kiểm chứng.
 - `strings.json` có vi/en và fallback, các khóa UI chính đã dùng; mô tả chi tiết còn tiếng Việt. Bản bàn giao mặc định Việt, chưa có gói English đầy đủ.
 
 ## Bước tiếp theo
@@ -74,7 +74,7 @@ Có preset APK debug và AAB release, script build cùng hướng dẫn ký. Th�
 
 - Regression RED→GREEN: phá căn cứ không bỏ qua hold/capture/survive; capture giữ liên tục/reset khi mất trạm; giáp giảm sát thương quân thường nhưng Phá thành bypass; headless không tạo playback.
 - Review độc lập không tìm thấy Critical; đã sửa tài liệu cũ, bổ sung lượt Phá thành và smoke cảm ứng phải thay đổi setting đã lưu.
-- GitHub Actions kiểm thử + build + emulatorAPI34 được bổ sung. **Chưa tính là Android PASS cho đến khi job emulator thành công.** Script chạm cài đặt, xác minh file checksum và giá trị đổi trước/sau Home, Back, force-stop/relaunch; không thay thế tutorial/battle nghiệm thu Android.
+- GitHub Actions kiểm thử + build + emulatorAPI34 được bổ sung. **Smoke Android đã PASS ở run38016747465; phạm vi chi tiết ở phần cuối.** Script chạm cài đặt, xác minh file checksum và giá trị đổi trước/sau Home, Back, force-stop/relaunch; không thay thế tutorial/battle nghiệm thu Android.
 - AAB0.2.0 thử lại với khóa kiểm tra tạm ngoài source và Java proxy settings: Gradle8.2 vẫn báo `Network is unreachable`. Không có AAB mới; không ký bằng khóa phát hành thật.
 
 ## Tương thích cập nhật APK
@@ -86,3 +86,17 @@ Có preset APK debug và AAB release, script build cùng hướng dẫn ký. Th�
 Run38014482442: bộ kiểm thử/build APK PASS; giả lậpAPI34 khởi động, cài và mở ứng dụng, tạo được hồ sơ checksum. Smoke cảm ứng FAIL vì hộp thoại fullscreen của Android chặn game (ảnh/log artifact xác nhận). Đã bổ sung nhận diện/dismiss hộp thoại hệ thống và testparser RED→GREEN; lượtCI sau phải thành công mới công nhận lifecycle/cảm ứng. BộPython hiện4/4pass.
 
 Đã phát hiện và sửa preset thiếu permissionVIBRATE: testmanifest RED→GREEN, APK mới có đúng VIBRATE và không quyền mạng, chứng thưdebug0.2.0 giữ nguyên. Smoke bổ sung triển khai quân bằng cảm ứng để ghi hoàn thành hướng dẫn, chọn/cast bom và chụp battle; vẫn chưa kiểm tra thắng trận/hướng dẫn1–4 trên Android.
+
+Run38014982929: kiểm thử/build PASS, smoke cảm ứng FAIL. Ảnh cho thấy Pixel Launcher ANR che hộp thoại fullscreen. Lượt thứ ba dùng cài đặt immersive của fixture theo AOSP CTS, chỉ đóng ANR nếu tên ứng dụng đúng Pixel Launcher; không bỏ qua ANR của game. Có lưu XML hệ thống để chẩn đoán. Bộ Python hiện6/6pass.
+
+Run38015544482: cài/khởi tạo profile PASS nhưng menu trống, touch FAIL. Log xác nhận SceneShaderGLES3/CanvasShaderGLES3 lỗi `GL_MAX_FRAGMENT_UNIFORM_VECTORS (261)` trên legacy SwiftShader. Đã đổi fixture sang `-gpu swangle`, không thay mã hay shader sản phẩm; smoke từ chối `Program linking failed`. Sửa cleanup setting rỗng để không che lỗi gốc. Tham khảo [Android graphics acceleration](https://developer.android.com/studio/run/emulator-acceleration) và [Godot issue109550](https://github.com/godotengine/godot/issues/109550).
+
+Run38015980249: SwANGLE đã render menu chính và không có lỗi shader. Smoke FAIL vì tọa độ desktop bỏ qua safe-area Pixel7: Cài đặt thực tế ở y648, thay vì618. Đã sửa tọa độ menu +30/footer−30 theo ảnh chụp, giữ assertion thay đổi hồ sơ thật. Menu render không được tính là lifecycle/gameplay PASS.
+
+Run38016358522: menu render PASS, smoke touch FAIL. Ảnh cho thấy lần này safe-area khởi tạo không cộng30px; nút ởy618, khác lần trướcy648. Fixture đổi sang điểm nằm trong giao nhau của cả hai hình chữ nhật nút đã quan sát (menu633/music196/continue468/footer792/skill798). Chưa xem đây là PASS trước khi kiểm tra hồ sơ đổi thật.
+
+## CI Android đạt — 0.2.0
+
+[Run38016747465](https://github.com/kenproxx/binh-doan-ti-hon/actions/runs/38016747465), commit4a0ed2aa662640a180f6c3aae75c0925ceecf827: tất cả step SUCCESS. Godot4.4.1, API34/google_apis/x86_64, Pixel7,480×854, KVM và SwANGLE. PASS: install/launch, checksum profile; ba lần chạm đổi music đã lưu (trước/sau Home và Back); vào chuẩn bị/battle và triển khai quân thật, lưu tutorial deploy; battle Home/quay lại; force-stop/relaunch giữ nguyên profile. Log không FATAL/SCRIPT ERROR hoặc shader link fail. Đây là thao tác ADB trên giả lập; chưa chứng minh Android thắng trận, hoàn thành hướng dẫn1–4, nâng cấp/campaign toàn trình hoặc hiệu năng máy thật. Artifact11655928702 giữ14ngày (hết24/10/2026). APK CI và APK bàn giao có cùng mã/cấu hình sản phẩm, khóa debug khác nhau; lần CI dùng APK do CI xuất.
+
+Đối chiếu ảnh artifact: battle.png có một quân Kiếm, đã nhận lệnh và MƯA BOM30s; battle-back.png còn29s, xác nhận cast kỹ năng và simulation có cập nhật. ScreenshotBack chụp ngay sau event không hiện overlayPause; không dùng ảnh này để kết luận Back/battlePause thành công. Battlebackground chỉ kiểm tra process sống; cần kiểm thử phản hồi pause/resume đầy đủ với thời gian chờ render và máy thật. Back/menu có assertion UI/lưu sau khi quay về menu.

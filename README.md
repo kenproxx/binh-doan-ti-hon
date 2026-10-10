@@ -66,3 +66,5 @@ Chạy toàn bộ: `GODOT_BIN=/path/to/godot python3 tools/run_tests.py`. Thử 
 GitHub Actions `.github/workflows/android.yml` chạy kiểm thử, build APK và smoke cảm ứng/cài đặt/lifecycle trên giả lậpAPI34; xem kết quả cụ thể trong tab Actions trước khi coi Android pass. `tools/android_smoke.py` chỉ dành cho giả lập CI dùng một lần, không phải checklist nghiệm thu gameplay hoặc máy thật.
 
 **Nếu đã cài0.1.0:** APK0.2.0 dùng chứng thư debug khác. Không gỡ bản cũ trước khi sao lưu tiến độ; xem mục chuyển dữ liệu trong [Android](docs/android.md). Các bản beta tiếp theo cần dùng lại khóa0.2.0 đã giữ riêng.
+
+Android smoke thực tế: [CI38016747465](https://github.com/kenproxx/binh-doan-ti-hon/actions/runs/38016747465) PASS cài/mở, chạm đổi setting/lưu, menuHome/Back, vào battle/triển khai/kỹ năng và force-stop/relaunch giữ hồ sơ. Chưa nghiệm thu thắng trận, hướng dẫn1–4/campaign toàn trình, battlepause/resume hoặc FPS trên điện thoại thật.

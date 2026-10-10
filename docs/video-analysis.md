@@ -26,7 +26,7 @@ Không khẳng định chạm triển khai, kéo camera, chọn nhiều quân, b
 ## Giả định và đề xuất để tạo luật nhất quán
 Chọn top-down orthogonal thay vì ghép luật tàu/isometric chưa rõ. Giữ màu phe tương phản, quân tự chiến đấu, cầu nối đảo, nhiều tuyến và minimap. Màu ta xanh ngọc kèm hình khiên, địch đỏ kèm cờ; hình từng vai trò khác nhau, không chỉ khác màu. Game có bối cảnh đảo tiền đồn hư cấu, tên Binh Đoàn Tí Hon, toàn bộ địa hình và tài sản được làm riêng.
 
-Giả định mới: hai căn cứ1500HP; tài nguyên tuyển quân180 đầu trận/8 mỗi giây; tối đa48 mỗi phe; trận180–300s; chạm thẻ rồi chạm đất triển khai; drag camera riêng biệt UI; ba lệnh và hai kỹ năng. Đề xuất mới: chiếm trạm+4 tài nguyên/s và vùng triển khai; 6 vai trò; tiến triển30 ải/3 chương; nâng cấp; hồ sơ offline; mục tiêu capture/hold/survive; sao và thưởng. Những phần này là thiết kế trong design.md, không được trình bày là tính năng đã quan sát được.
+Giả định ban đầu: hai căn cứ1500HP (bản0.2.0 giữ1500HP cho hướng dẫn1–4 và dùng10000HP/giáp đối xứng từải5; xem design.md); tài nguyên tuyển quân180 đầu trận/8 mỗi giây; tối đa48 mỗi phe; trận180–300s; chạm thẻ rồi chạm đất triển khai; drag camera riêng biệt UI; ba lệnh và hai kỹ năng. Đề xuất mới: chiếm trạm+4 tài nguyên/s và vùng triển khai; 6 vai trò; tiến triển30 ải/3 chương; nâng cấp; hồ sơ offline; mục tiêu capture/hold/survive; sao và thưởng. Những phần này là thiết kế trong design.md, không được trình bày là tính năng đã quan sát được.
 
 ## Các lựa chọn đã cân nhắc
 1. RTS top-down hai căn cứ + cầu + tự chiến đấu (chọn): dễ đọc và điều khiển một tay, thích hợp Android, có quyết định tuyến/đội hình/tài nguyên.
