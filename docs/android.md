@@ -93,7 +93,7 @@ Nếu host không có `/dev/kvm`, có thể thử `-accel off -gpu swiftshader_i
 
 ## CI và bản0.2.0
 
-Workflow `.github/workflows/android.yml` chạy bộ7suite, export debugAPK, dùng giả lậpx86_64/API34 có KVM và lưu artifact APK/log/screenshot14ngày. Script `tools/android_smoke.py` giới hạn thiết bị `emulator-*`, dùng viewport480×854, chạm toggle nhạc và đọc profile checksum để xác minh UI/lưu/lifecycle. Chỉ smoke menu/cài đặt; chưa kiểm thử battle Android toàn trình.
+Workflow `.github/workflows/android.yml` chạy bộ7suite, export debugAPK, dùng giả lậpx86_64/API34 có KVM và lưu artifact APK/log/screenshot14ngày. Script `tools/android_smoke.py` giới hạn thiết bị `emulator-*`, dùng viewport480×854, chạm toggle nhạc và đọc profile checksum để xác minh UI/lưu/lifecycle. Smoke menu/cài đặt/lifecycle và thao tác triển khai đầu tiên trong battle; chưa kiểm thử chiến thắng và battle Android toàn trình.
 
 Bản0.2.0 versionCode2. Thử AAB mới với khóa validation tạm vẫn dừng ở downloadGradle8.2 `Network is unreachable`, kể cả cấu hình proxyJava. Không có AAB mới và không thể coi CI chưa chạy là pass.
 

@@ -8,7 +8,7 @@ Godot 4.4.1 stable, GDScript, Compatibility. Mã sản phẩm cuối đã đư�
 
 ## Kiểm thử tự động
 
-Lần chạy cuối: Python dữ liệu **2/2**; Godot **audio, profile, battle, objectives, UI, acceptance** đều exit 0 và không có FAIL/ERROR trong log cuối (`tools/run_tests.py`: **7/7 PASS**). Acceptance thắng **30/30** từ hồ sơ mới, dùng tối đa bốn loại quân thực sự đã mở, tài nguyên/cooldown thật và nâng cấp mua bằng tiền kiếm được. Test chiến dịch không sửa HP hoặc tài nguyên. Các test đơn vị dùng fixture để cô lập timeout/lỗi lưu được ghi riêng trong code.
+Lần chạy cuối: Python dữ liệu/UI hệ thống **5/5**; Godot **audio, profile, battle, objectives, UI, acceptance** đều exit 0 và không có FAIL/ERROR trong log cuối (`tools/run_tests.py`: **7/7 PASS**). Acceptance thắng **30/30** từ hồ sơ mới, dùng tối đa bốn loại quân thực sự đã mở, tài nguyên/cooldown thật và nâng cấp mua bằng tiền kiếm được. Test chiến dịch không sửa HP hoặc tài nguyên. Các test đơn vị dùng fixture để cô lập timeout/lỗi lưu được ghi riêng trong code.
 
 | Tiêu chí | Bằng chứng | Kết quả |
 |---|---|---|
@@ -40,12 +40,12 @@ Control signal tests là kiểm thử tự động, không phải cảm ứng An
 - File: `binh-doan-ti-hon-debug.apk`, **54,754,789 bytes**, debug signed.
 - Package `com.binhdoantihon.game`; minSDK 21, targetSDK 34; portrait; ARM64 và x86_64.
 - `apksigner` v1/v2/v3 và ZIP integrity đều pass.
-- Không yêu cầu permission; bốn JSON dữ liệu đầy đủ; build/tools/tests/docs không nằm trong APK.
+- Chỉ yêu cầu permission VIBRATE cho phản hồi rung; không quyền mạng; bốn JSON dữ liệu đầy đủ; build/tools/tests/docs không nằm trong APK.
 - Export lại từ mã 0.2.0 sau khi sửa mục tiêu, giáp căn cứ và chế độ âm thanh headless.
 
 SHA256:
 ```text
-29ca8c4bf852da506c0028564c1c922080edd203392b960b63f308833408b349
+74ea7a66d3c04e273336753d6aed223ff3685d1987af0bc9ce15751a07205efb
 ```
 
 **Chưa xác minh cài và mở APK trên Android.** Host không có KVM. Đã cài SDK và tạo AVD 34 riêng; software CPU emulator bị treo QEMU rồi segfault trước boot. Không có điện thoại USB trong môi trường. Điều này không chứng minh APK lỗi, cũng không được coi là cài đặt pass.
@@ -80,3 +80,9 @@ Có preset APK debug và AAB release, script build cùng hướng dẫn ký. Th�
 ## Tương thích cập nhật APK
 
 Đối chiếu chứng thư0.1.0 và0.2.0 xác nhận khóa debug khác nhau; không thể cài đè. Khóa0.2.0 đã giữ lại cho các beta tiếp theo. Nếu đã cài0.1.0, cần sao lưu trước khi gỡ; hướng dẫn ADB và giới hạn xác minh ở docs/android.md. Không coi việc xác minh ZIP/chữ ký là kiểm thử nâng cấp tại chỗ.
+
+## CI Android — lần chạy thực tế
+
+Run38014482442: bộ kiểm thử/build APK PASS; giả lậpAPI34 khởi động, cài và mở ứng dụng, tạo được hồ sơ checksum. Smoke cảm ứng FAIL vì hộp thoại fullscreen của Android chặn game (ảnh/log artifact xác nhận). Đã bổ sung nhận diện/dismiss hộp thoại hệ thống và testparser RED→GREEN; lượtCI sau phải thành công mới công nhận lifecycle/cảm ứng. BộPython hiện4/4pass.
+
+Đã phát hiện và sửa preset thiếu permissionVIBRATE: testmanifest RED→GREEN, APK mới có đúng VIBRATE và không quyền mạng, chứng thưdebug0.2.0 giữ nguyên. Smoke bổ sung triển khai quân bằng cảm ứng để ghi hoàn thành hướng dẫn, chọn/cast bom và chụp battle; vẫn chưa kiểm tra thắng trận/hướng dẫn1–4 trên Android.

@@ -3,7 +3,7 @@ import pathlib
 import subprocess
 import sys
 import time
-from android_ui import immersive_confirm_center
+from android_ui import immersive_confirm_center, launcher_anr_close_center
 
 PACKAGE = "com.binhdoantihon.game"
 APK = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else "build/binh-doan-ti-hon-debug.apk")
@@ -45,7 +45,18 @@ adb("shell", "wm", "size", "480x854")
 adb("shell", "wm", "density", "160")
 adb("install", "-r", str(APK))
 adb("logcat", "-c")
+previous_confirmation = adb("shell", "settings", "get", "secure", "immersive_mode_confirmations").strip()
+# AOSP CTS uses this setting in disposable fixtures to prevent fullscreen education blocking input.
+adb("shell", "settings", "put", "secure", "immersive_mode_confirmations", "confirmed")
 try:
+    adb("shell", "uiautomator", "dump", "/sdcard/bdth-ui.xml")
+    startup_xml = adb("shell", "cat", "/sdcard/bdth-ui.xml")
+    (OUT / "startup-ui.xml").write_text(startup_xml)
+    launcher_close = launcher_anr_close_center(startup_xml)
+    if launcher_close:
+        adb("shell", "input", "tap", str(launcher_close[0]), str(launcher_close[1]))
+        time.sleep(2)
+        print("FIXTURE: closed observed Pixel Launcher ANR; game ANR is not dismissed", flush=True)
     launch()
     alive("launch")
     # Wait for the startup menu to create a valid durable profile.
@@ -61,6 +72,7 @@ try:
     # First fullscreen launch has a real Android overlay that consumes touches.
     adb("shell", "uiautomator", "dump", "/sdcard/bdth-ui.xml")
     system_xml = adb("shell", "cat", "/sdcard/bdth-ui.xml")
+    (OUT / "main-ui.xml").write_text(system_xml)
     center = immersive_confirm_center(system_xml)
     if center is not None:
         adb("shell", "input", "tap", str(center[0]), str(center[1]))
@@ -92,6 +104,30 @@ try:
     adb("shell", "input", "tap", "240", "618")
     time.sleep(1)
     saved = toggle_music(not saved["settings"]["music"])
+    adb("shell", "input", "keyevent", "KEYCODE_BACK")
+    time.sleep(1)
+    adb("shell", "input", "tap", "240", "453")  # Continue stage 1
+    time.sleep(1)
+    adb("shell", "input", "tap", "365", "803")  # Sticky Start button
+    time.sleep(2)
+    adb("shell", "input", "tap", "240", "480")  # Valid player-base deployment
+    deadline = time.monotonic() + 10
+    while "deploy" not in profile()["tutorial"]:
+        if time.monotonic() >= deadline:
+            (OUT / "deploy-failure.png").write_bytes(adb("exec-out", "screencap", "-p", binary=True))
+            raise RuntimeError("Actual Android deployment did not complete tutorial action")
+        time.sleep(0.25)
+    adb("shell", "input", "tap", "240", "813")  # Bomb skill selection
+    adb("shell", "input", "tap", "240", "480")
+    time.sleep(1)
+    (OUT / "battle.png").write_bytes(adb("exec-out", "screencap", "-p", binary=True))
+    saved = profile()
+    print("PASS: actual Android touch deployed a unit and persisted tutorial action", flush=True)
+    adb("shell", "input", "keyevent", "KEYCODE_HOME")
+    launch()
+    alive("battle background and return")
+    adb("shell", "input", "keyevent", "KEYCODE_BACK")
+    (OUT / "battle-back.png").write_bytes(adb("exec-out", "screencap", "-p", binary=True))
     adb("shell", "am", "force-stop", PACKAGE)
     launch()
     alive("relaunch after process stop")
@@ -104,3 +140,7 @@ finally:
     (OUT / "logcat.txt").write_text(adb("logcat", "-d"))
     adb("shell", "wm", "size", "reset")
     adb("shell", "wm", "density", "reset")
+    if previous_confirmation == "null":
+        adb("shell", "settings", "delete", "secure", "immersive_mode_confirmations")
+    else:
+        adb("shell", "settings", "put", "secure", "immersive_mode_confirmations", previous_confirmation)

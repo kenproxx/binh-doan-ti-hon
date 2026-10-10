@@ -2,6 +2,13 @@ import json, unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 class DataTests(unittest.TestCase):
+ def test_android_vibration_permission_is_packaged(self):
+  import configparser
+  cfg=configparser.ConfigParser()
+  cfg.read(ROOT/'export_presets.cfg')
+  for section in ['preset.0.options','preset.1.options']:
+   self.assertEqual(cfg.get(section,'permissions/vibrate',fallback='false'),'true')
+   self.assertEqual(cfg.get(section,'permissions/internet'),'false')
  def test_complete_campaign_contract(self):
   stages=json.loads((ROOT/'data/stages.json').read_text())
   units=json.loads((ROOT/'data/units.json').read_text())
