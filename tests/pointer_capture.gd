@@ -26,3 +26,4 @@ func run() -> void:
   player.stream=null
  await create_timer(.1).timeout
  quit(0 if ok else 1)
+

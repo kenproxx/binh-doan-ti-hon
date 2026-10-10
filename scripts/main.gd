@@ -210,11 +210,11 @@ func show_detail(id: int) -> void:
 	if str(stage.get("objective", "")) == "hold":
 		_label("Tích lũy %ds giữ cả hai trạm cùng lúc trước khi hết giờ." % int(stage.get("hold_seconds", 45)), 18)
 	elif str(stage.get("objective", "")) == "survive":
-		_label("Căn cứ phải còn HP khi hết giờ. Phá căn cứ địch cũng thắng.", 18)
+		_label("Căn cứ phải còn HP khi hết giờ. Quân tiến công bảo vệ tuyến trạm, không bỏ qua mục tiêu sống sót.", 18)
 	elif str(stage.get("objective", "")) == "destroy":
 		_label("Hết giờ so tỷ lệ HP căn cứ; hòa được tính là thua.", 18)
 	else:
-		_label("Cần giữ cả hai trạm cùng lúc trước khi hết giờ.", 18)
+		_label("Chiếm cả hai trạm, rồi giữ liên tục %ds. Mất một trạm sẽ đặt lại bộ đếm." % int(stage.get("capture_hold_seconds", 0)), 18)
 	_label("Giới hạn: %d giây\nTài nguyên: 180 • Thu nhập: 8/giây\nChiếm trạm: +4/giây • Mở vùng triển khai" % int(stage.get("duration", stage.get("time_limit", 240))))
 	_label(str(stage.get("terrain_hint", "")) + "\n" + str(stage.get("suggestion", "")), 17, TEAL)
 	_label("ĐIỀU KIỆN SAO", 16, TEAL)
@@ -267,6 +267,9 @@ func _battle_rules(stage: Dictionary) -> String:
 		text += "\nCả hai căn cứ có tháp: %d sát thương / %.1fs, tầm %d." % [damage, float(stage.get("base_defense_interval", 1.0)), int(stage.get("base_defense_range", 165))]
 	else:
 		text += " Căn cứ không có tháp phòng thủ."
+	var multiplier: float = float(stage.get("base_damage_multiplier", 1.0))
+	if multiplier < 1.0:
+		text += "\nCả hai căn cứ: %d HP; giáp giảm %d%% sát thương quân thường. Phá thành bỏ qua giáp." % [int(stage.get("base_hp", 1500)), roundi((1.0 - multiplier) * 100)]
 	return text
 
 func _toggle_unit(id: String) -> void:
@@ -450,6 +453,8 @@ func _update_hud() -> void:
 			if int(point.owner) == 0:
 				owned += 1
 		hud.text += "\nTrạm của ta: %d / 2" % owned
+		if float(sim.stage.get("capture_hold_seconds", 0)) > 0:
+			hud.text += " • Giữ %d / %ds" % [int(sim.capture_hold_time), int(sim.stage.capture_hold_seconds)]
 	if str(sim.stage.get("objective", "")) == "hold":
 		hud.text += "\nGiữ trạm: %d / %ds" % [int(sim.hold_time), int(sim.stage.get("hold_seconds", 45))]
 	_update_tutorial()

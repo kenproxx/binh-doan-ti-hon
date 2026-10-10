@@ -158,3 +158,4 @@ func mark_tutorial(key: String) -> void:
  var previous: Dictionary=data.duplicate(true)
  data.tutorial.append(key)
  _commit(previous)
+

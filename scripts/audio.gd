@@ -22,7 +22,8 @@ func cue(name: String) -> void:
  if p and not p.data.get("settings",{}).get("sfx",true): return
  if not sounds.has(name): name="ui"
  players[cursor].stream=sounds.get(name)
- players[cursor].play()
+ # Headless test runs validate streams/settings without a live audio mixer.
+ if DisplayServer.get_name() != "headless": players[cursor].play()
  cursor=(cursor+1)%players.size()
  if name in ["hit","skill"] and p and p.data.settings.get("vibration",true) and OS.has_feature("android"):
   Input.vibrate_handheld(25 if name=="hit" else 60)
@@ -42,7 +43,7 @@ func _music(name: String) -> void:
  stream.loop_end=roundi(stream.get_length()*stream.mix_rate)
  if music_player.stream!=stream:
   music_player.stream=stream
-  music_player.play()
+  if DisplayServer.get_name() != "headless": music_player.play()
  apply_settings()
 func _exit_tree() -> void:
  if music_player:

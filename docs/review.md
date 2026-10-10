@@ -1,3 +1,7 @@
+# Review — lịch sử 0.1.0 và cập nhật 0.2.0
+
+Các nhận định về thời lượng/bản Android trong phần review cũ phía dưới thuộc 0.1.0. Kết quả hiện hành ở docs/testing.md và phần cập nhật cuối.
+
 # Independent gameplay and persistence review
 
 Reviewed Godot 4.4.1 source, JSON content, the executable simulation, and real `main.tscn` Controls. Reviewer changed only this report and `tests/test_acceptance.gd`.
@@ -48,3 +52,8 @@ No new blocking campaign, deployment, tutorial, reward, or upgrade defect was fo
 This final review does not validate APK export/signing/installability, Android touch interaction, physical-device lifecycle, sustained memory, or measured phone FPS. In particular, the `Engine.max_fps` setting and desktop/headless tests are not measurements of 60 FPS on Android. No Android readiness claim follows from this review.
 
 Parent final corrections: successful durable `_commit` now clears the old save-failure notice; a regression was observed red, then passed. Latest parent full six-suite run exits 0 without shutdown errors. Rendered four-card snapshot after the fix shows every card and Pause within the 480px viewport. Android source template restored and ZIP verified; final APK hash is recorded in testing.md. These checks do not close the Android install/FPS or duration gaps.
+
+
+## Review độc lập bản0.2.0
+
+Không phát hiện Critical. Ba Important: tài liệu cũ; smoke PID không chứng minh UI còn phản hồi; acceptance chưa thử Phá thành. Đã cập nhật thiết kế/báo cáo; smoke yêu cầu cảm ứng thật đổi setting và kiểm tra durable state sau lifecycle; thêm chiến dịch `--siege`,30/30 thắng với các ải thường194–300.1s. Minor catalogue English “one post” đã sửa thành “both posts”. Android CI chưa chạy lúc review, không được công nhận nghiệm thu thiết bị.

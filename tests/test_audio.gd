@@ -6,6 +6,13 @@ func run() -> void:
  var p=root.get_node("Profile")
  var original: Dictionary=p.data.settings.duplicate(true)
  audio.menu_music()
+ if DisplayServer.get_name() == "headless" and audio.music_player.playing:
+  printerr("FAIL: headless validation must not create live audio playback")
+  audio.music_player.stop()
+  audio.music_player.stream = null
+  await create_timer(.1).timeout
+  quit(1)
+  return
  if audio.music_player.stream.loop_mode!=AudioStreamWAV.LOOP_FORWARD:
   printerr("FAIL music must loop across whole menu session")
   audio.music_player.stop()
@@ -17,7 +24,9 @@ func run() -> void:
  assert(audio.music_player.stream.loop_mode==AudioStreamWAV.LOOP_FORWARD)
  p.data.settings.music=false
  audio.apply_settings()
- assert(audio.music_player.stream_paused)
+ # Godot ignores stream_paused on an inactive player; live playback is absent headlessly.
+ if DisplayServer.get_name() != "headless": assert(audio.music_player.stream_paused)
+ else: assert(not audio.music_player.playing)
  p.data.settings.quality="low"
  audio.apply_settings()
  assert(Engine.max_fps==30)

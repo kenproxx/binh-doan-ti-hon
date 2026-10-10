@@ -17,7 +17,10 @@ func run() -> void:
  for stage_id in range(1,31):
   check(p.stage_unlocked(stage_id), "Stage %d reachable through previous wins" % stage_id)
   var roster: Array = []
-  for id in ["blade","bomber","archer","medic"]:
+  var roster_order: Array = ["blade","bomber","archer","medic"]
+  if OS.get_cmdline_user_args().has("--siege") and p.data.unlocked.has("siege"):
+   roster_order = ["siege", "blade", "archer", "medic"]
+  for id in roster_order:
    if p.data.unlocked.has(id): roster.append(id)
   # Spend only earned gold, buying the cheapest next upgrade in the active squad.
   for purchase in range(20):

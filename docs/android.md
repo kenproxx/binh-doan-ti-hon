@@ -90,3 +90,9 @@ Nếu host không có `/dev/kvm`, có thể thử `-accel off -gpu swiftshader_i
 - Đã kiểm tra manifest bằng `aapt`: package đúng, portrait, có ARM64 và x86_64, không yêu cầu quyền Internet.
 - Đã thử export AAB với khóa kiểm thử tạm thời ngoài repository. Gradle wrapper không tải được Gradle 8.2 do Java báo `Network is unreachable`; **chưa tạo AAB phát hành**. Script/preset ký phát hành sẵn sàng để chạy ở máy có mạng Gradle/Maven và khóa của chủ ứng dụng.
 - Đã cài Android Emulator/API34 x86_64 và thử khởi động CPU/software (host không có KVM). Lần thử trên AVD riêng `binh_final` đã tránh khóa nhưng QEMU CPU/main-loop bị treo rồi emulator segfault trước khi Android boot; chưa có lần cài/chạy APK thành công trong emulator. **Chưa kiểm thử trên điện thoại thật.**
+
+## CI và bản0.2.0
+
+Workflow `.github/workflows/android.yml` chạy bộ7suite, export debugAPK, dùng giả lậpx86_64/API34 có KVM và lưu artifact APK/log/screenshot14ngày. Script `tools/android_smoke.py` giới hạn thiết bị `emulator-*`, dùng viewport480×854, chạm toggle nhạc và đọc profile checksum để xác minh UI/lưu/lifecycle. Chỉ smoke menu/cài đặt; chưa kiểm thử battle Android toàn trình.
+
+Bản0.2.0 versionCode2. Thử AAB mới với khóa validation tạm vẫn dừng ở downloadGradle8.2 `Network is unreachable`, kể cả cấu hình proxyJava. Không có AAB mới và không thể coi CI chưa chạy là pass.

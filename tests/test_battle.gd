@@ -179,3 +179,4 @@ func run() -> void:
 		player.stream = null
 	await create_timer(0.1).timeout
 	quit(1 if failures else 0)
+

@@ -22,6 +22,7 @@ var rally: Vector2 = Vector2.ZERO
 var loadout: Array = []
 var skill: String = "bomb"
 var hold_time: float = 0
+var capture_hold_time: float = 0
 var levels: Dictionary = {}
 var unit_defs: Dictionary = {}
 var rng = RandomNumberGenerator.new()
@@ -64,6 +65,7 @@ func setup(config: Dictionary, selected: Array, upgrades: Dictionary, selected_s
 	mode = "attack"
 	rally = map.base_positions[0]
 	hold_time = 0
+	capture_hold_time = 0
 	next_uid = 1
 	ai_timer = 0.8
 	base_attack_timers = [0.0,0.0]
@@ -186,6 +188,20 @@ func _goal(unit: Dictionary) -> Vector2:
 				distance = unit.pos.distance_to(point.pos)
 				best = point.pos
 		if distance < INF: return best
+		# Once secured, defend the nearest post instead of bypassing the objective.
+		for point in captures:
+			if unit.pos.distance_to(point.pos) < distance:
+				distance = unit.pos.distance_to(point.pos)
+				best = point.pos
+		return best
+	if stage.get("objective", "destroy") == "survive" and unit.team == 0:
+		var closest: Vector2 = map.base_positions[0]
+		var distance: float = INF
+		for point in captures:
+			if unit.pos.distance_to(point.pos) < distance:
+				distance = unit.pos.distance_to(point.pos)
+				closest = point.pos
+		return closest
 	return map.base_positions[1-unit.team]
 func _update_unit(unit: Dictionary,dt: float) -> void:
 	var data: Dictionary = unit.data
@@ -227,11 +243,12 @@ func _update_unit(unit: Dictionary,dt: float) -> void:
 							if other.uid != target.uid and other.team != unit.team and other.pos.distance_to(target.pos) <= splash: other.hp -= damage*0.6
 					effects.append({"kind":"heal" if medic else "hit","pos":unit.pos,"end":target.pos,"ttl":0.18,"radius":float(data.get("splash",4)),"team":unit.team})
 			return
-	elif not medic and (unit.team == 1 or mode == "attack") and unit.pos.distance_to(map.base_positions[1-unit.team]) <= attack_range+25:
+	elif not medic and (unit.team == 1 or mode == "attack") and (unit.team == 1 or stage.get("objective", "destroy") == "destroy") and unit.pos.distance_to(map.base_positions[1-unit.team]) <= attack_range+25:
 		unit.state = "attack"
 		if unit.attack_timer <= 0:
 			unit.attack_timer = maxf(0.2,float(data.get("interval",1)))
-			base_hp[1-unit.team] -= float(data.get("damage",10))*(3.0 if unit.type == "siege" else 1.0)
+			var multiplier: float = 3.0 if unit.type == "siege" else clampf(float(stage.get("base_damage_multiplier", 1.0)), 0.0, 1.0)
+			base_hp[1-unit.team] -= float(data.get("damage",10))*multiplier
 		return
 	if unit.pos.distance_to(goal) <= 12:
 		unit.state = "idle"
@@ -294,7 +311,11 @@ func _capture(dt: float) -> void:
 	var owned: bool = true
 	for point in captures:
 		if point.owner != 0: owned = false
-	if owned: hold_time += dt
+	if owned:
+		hold_time += dt
+		capture_hold_time += dt
+	else:
+		capture_hold_time = 0
 func _base_defense(dt: float) -> void:
 	var damage: float = float(stage.get("base_defense_damage",0))
 	if damage <= 0: return
@@ -367,14 +388,14 @@ func _resolve() -> void:
 	if base_hp[0] <= 0:
 		_finish(false)
 		return
-	if base_hp[1] <= 0:
+	var objective: String = stage.get("objective","destroy")
+	if base_hp[1] <= 0 and objective == "destroy":
 		_finish(true)
 		return
-	var objective: String = stage.get("objective","destroy")
 	var owned: bool = true
 	for point in captures:
 		if point.owner != 0: owned = false
-	if objective == "capture" and owned:
+	if objective == "capture" and owned and capture_hold_time >= float(stage.get("capture_hold_seconds", 0)):
 		_finish(true)
 	elif objective == "hold" and hold_time >= float(stage.get("hold_seconds",30)):
 		_finish(true)

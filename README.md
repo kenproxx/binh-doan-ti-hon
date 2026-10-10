@@ -2,7 +2,7 @@
 
 RTS 2D pixel offline cho Android dọc, phát triển bằng **Godot 4.4.1 stable + GDScript**, renderer Compatibility. Có luồng khởi động → menu → chiến dịch → chuẩn bị → trận → kết quả → thưởng/nâng cấp → ải tiếp theo và lưu hồ sơ.
 
-**Trạng thái:** bản thử nghiệm có toàn bộ luồng và30 ải; chưa đạt nghiệm thu Android thiết bị thật, chưa được công nhận bản phát hành hoàn chỉnh. Chi tiết kết quả cuối cùng ở [báo cáo kiểm thử](docs/testing.md).
+**Trạng thái:** bản thử nghiệm có toàn bộ luồng và 30 ải; chưa đạt nghiệm thu Android thiết bị thật, chưa được công nhận bản phát hành hoàn chỉnh. Chi tiết kết quả cuối cùng ở [báo cáo kiểm thử](docs/testing.md).
 
 ## Chơi và chạy
 1. Cài Godot4.4.1 standard (không cần.NET).
@@ -13,7 +13,7 @@ RTS 2D pixel offline cho Android dọc, phát triển bằng **Godot 4.4.1 stabl
 APK debug được bàn giao trong cuộc trò chuyện, không commit APK/keystore vào repo. [Build APK, AAB và ký](docs/android.md). Bản APK offline không xin quyền Internet.
 
 ## Nội dung
-- Ba chương,30 ải khác cầu/chướng ngại/đội hình địch/mục tiêu; đồng cỏ, hẻm đá, quần đảo.
+- Ba chương, 30 ải khác cầu/chướng ngại/đội hình địch/mục tiêu; đồng cỏ, hẻm đá, quần đảo.
 - Sáu vai trò: kiếm, vệ binh, cung, hỏa pháo, quân y, phá thành. Đội hình tối đa4 loại đã mở + kỹ năng mưa bom/hồi phục.
 - Hai căn cứ, tài nguyên/cooldown/giới hạn48 quân mỗi phe, hai trạm có thưởng thu nhập và vùng triển khai.
 - Mục tiêu phá căn cứ/chiếm hai trạm/giữ hai trạm/sống sót. Có giới hạn thời gian; phá căn cứ địch cũng thắng các nhiệm vụ phụ.
@@ -55,3 +55,12 @@ Tests dùng thư mục hồ sơ kiểm thử riêng hoặc khôi phục snapshot
 - [Các mốc triển khai](docs/plan.md)
 - [Kiểm thử/hạn chế](docs/testing.md), [đánh giá độc lập](docs/review.md)
 - [Nguồn tài sản](CREDITS.md), [MIT](LICENSE)
+
+
+## Bản beta 0.2.0
+
+Đã sửa thắng sai mục tiêu, cân bằng giáp căn cứ đối xứng và kiểm thử hai đội hình chiến dịch (có/không ưu tiên Phá thành). Các ải5–30 trong hai lượt đo đều khoảng3–5phút; bốn ải hướng dẫn ngắn. Chưa đo FPS trên điện thoại thật.
+
+Chạy toàn bộ: `GODOT_BIN=/path/to/godot python3 tools/run_tests.py`. Thử đội hình Phá thành: `godot --headless --path . --script tests/test_acceptance.gd -- --siege`.
+
+GitHub Actions `.github/workflows/android.yml` chạy kiểm thử, build APK và smoke cảm ứng/cài đặt/lifecycle trên giả lậpAPI34; xem kết quả cụ thể trong tab Actions trước khi coi Android pass. `tools/android_smoke.py` chỉ dành cho giả lập CI dùng một lần, không phải checklist nghiệm thu gameplay hoặc máy thật.
