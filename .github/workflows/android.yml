@@ -48,6 +48,7 @@ jobs:
           arch: x86_64
           profile: pixel_7
           emulator-boot-timeout: 300
+          emulator-options: -no-window -gpu swangle -no-snapshot -noaudio -no-boot-anim
           script: python3 tools/android_smoke.py
       - name: Upload APK and evidence
         if: always()

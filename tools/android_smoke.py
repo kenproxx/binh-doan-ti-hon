@@ -135,12 +135,13 @@ try:
     log = adb("logcat", "-d")
     assert "FATAL EXCEPTION" not in log and "Fatal signal" not in log, "Android runtime crash"
     assert "SCRIPT ERROR:" not in log, "Godot script error"
+    assert "Program linking failed" not in log, "Renderer shader compilation failed"
     print("ANDROID SMOKE PASS: install, launch, Home/return, Back, durable profile", flush=True)
 finally:
     (OUT / "logcat.txt").write_text(adb("logcat", "-d"))
     adb("shell", "wm", "size", "reset")
     adb("shell", "wm", "density", "reset")
-    if previous_confirmation == "null":
+    if previous_confirmation in ("null", ""):
         adb("shell", "settings", "delete", "secure", "immersive_mode_confirmations")
     else:
         adb("shell", "settings", "put", "secure", "immersive_mode_confirmations", previous_confirmation)
