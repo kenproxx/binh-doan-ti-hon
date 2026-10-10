@@ -80,7 +80,7 @@ try:
         print("PASS: Android fullscreen confirmation dismissed", flush=True)
     (OUT / "main.png").write_bytes(adb("exec-out", "screencap", "-p", binary=True))
     def toggle_music(expected):
-        adb("shell", "input", "tap", "240", "211")
+        adb("shell", "input", "tap", "240", "196")
         deadline = time.monotonic() + 10
         while time.monotonic() < deadline:
             changed = profile()
@@ -90,9 +90,10 @@ try:
             time.sleep(0.25)
         (OUT / "touch-failure.png").write_bytes(adb("exec-out", "screencap", "-p", binary=True))
         raise RuntimeError("Real UI touch did not change the saved setting; frozen UI or coordinate mismatch")
-    # Pixel7 safe-area insets shift menu down30px and footer up30px at480x854.
+    # Observed Pixel7 startup safe-area offsets are0 or30px; tap the shared interior
+    # of both actual button rectangles (not either edge). Fixture-only coordinates.
     # Fixed 480x854 fixture matches rendered UI; a frozen process cannot pass this assertion.
-    adb("shell", "input", "tap", "240", "648")
+    adb("shell", "input", "tap", "240", "633")
     time.sleep(1)
     saved = toggle_music(not saved["settings"]["music"])
     adb("shell", "input", "keyevent", "KEYCODE_HOME")
@@ -102,14 +103,14 @@ try:
     saved = toggle_music(not saved["settings"]["music"])
     adb("shell", "input", "keyevent", "KEYCODE_BACK")
     alive("Back from menu")
-    adb("shell", "input", "tap", "240", "648")
+    adb("shell", "input", "tap", "240", "633")
     time.sleep(1)
     saved = toggle_music(not saved["settings"]["music"])
     adb("shell", "input", "keyevent", "KEYCODE_BACK")
     time.sleep(1)
-    adb("shell", "input", "tap", "240", "483")  # Continue stage 1
+    adb("shell", "input", "tap", "240", "468")  # Continue stage 1
     time.sleep(1)
-    adb("shell", "input", "tap", "365", "773")  # Sticky Start button
+    adb("shell", "input", "tap", "365", "792")  # Sticky Start button
     time.sleep(2)
     adb("shell", "input", "tap", "240", "480")  # Valid player-base deployment
     deadline = time.monotonic() + 10
@@ -118,7 +119,7 @@ try:
             (OUT / "deploy-failure.png").write_bytes(adb("exec-out", "screencap", "-p", binary=True))
             raise RuntimeError("Actual Android deployment did not complete tutorial action")
         time.sleep(0.25)
-    adb("shell", "input", "tap", "240", "783")  # Bomb skill selection
+    adb("shell", "input", "tap", "240", "798")  # Bomb skill selection
     adb("shell", "input", "tap", "240", "480")
     time.sleep(1)
     (OUT / "battle.png").write_bytes(adb("exec-out", "screencap", "-p", binary=True))
